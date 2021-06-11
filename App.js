@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+//import { Text } from 'react-native';
+import Login from './componentes/Login';
+import Menu from './componentes/Menu';
+import React, {useState} from 'react';
+
+function App () {
+  const [conectado, setConectado]= useState(false);
+
+  const acceder = (estado)=>{
+    setConectado (estado)
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    conectado ? <Menu/> : <Login acceder = {acceder}/>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
